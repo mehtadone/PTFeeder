@@ -1,0 +1,10 @@
+﻿BB_period = 900
+BB_sma = 40
+
+SMA_period = 300
+SMA_1 = 24
+SMA_2 = 12
+
+EMA_period = 300
+EMA_1 = 34
+EMA_2 = 13
