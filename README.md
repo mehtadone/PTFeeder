@@ -1,7 +1,11 @@
-# PT Feeder
+# Welcome to PT-Feeder
 
-PT Feeder (PTF) is a professional tool to feed [Profit Trailer](https://profittrailer.io) with data fetched from the markets. 
+This is an Addon for Profit Trailer. To get an Idea how it works or get some help setting it up, please have a look at our Wiki.
 
-PTF is meant to used by experienced traders and is by no means a tool for beginners.
+### 👩‍🏫 [Read the Wiki][1]
+### 💸  [Buy PT Feeder][2]
+### 📺 [Watch some Videos][3]
 
-Find the documentation for PTF and how to get it → [here](https://github.com/mehtadone/PTFeeder/wiki).
+[1]:	https://github.com/mehtadone/PTFeeder/wiki
+[2]:	https://github.com/mehtadone/PTFeeder/wiki/How-to-buy-PT-Feeder
+[3]:	https://github.com/mehtadone/PTFeeder/wiki/Videos
