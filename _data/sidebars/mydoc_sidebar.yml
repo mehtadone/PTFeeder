@@ -1,0 +1,119 @@
+# This is your sidebar TOC. The sidebar code loops through sections here and provides the appropriate formatting.
+
+entries:
+- title: sidebar
+  product: PT Feeder
+  folders:
+
+  - title: Overview
+    output: web, pdf
+    folderitems:
+
+    - title: Get started
+      url: /index.html
+      output: web, pdf
+      type: homepage
+
+    - title: How to buy
+      url: /mydoc_how_to_buy.html
+      output: web, pdf
+
+    - title: Newcomer checklist
+      url: /mydoc_newcomer_checklist.html
+      output: web, pdf
+
+    - title: How PT Feeder Works
+      url: /mydoc_how_ptf_works.html
+      output: web, pdf
+
+    - title: Videos
+      url: /mydoc_videos.html
+      output: web, pdf
+
+  - title: Release Notes
+    output: web, pdf
+    folderitems:
+
+    - title: 1.5.0 PT Feeder
+      url: /mydoc_release_notes_1_5_0.html
+      output: web, pdf
+
+  - title: Installation
+    output: web, pdf
+    folderitems:
+
+    - title: License activation
+      url: /mydoc_license_activation.html
+      output: web, pdf
+
+    - title: Installation
+      url: /mydoc_installation.html
+      output: web, pdf
+
+    - title: Install Guide - Windows
+      url: /mydoc_install_windows.html
+      output: web, pdf
+
+    - title: Install Guide - Linux
+      url: /mydoc_install_linux.html
+      output: web, pdf
+
+    - title: Install Guide - macOS
+      url: /mydoc_install_macOS.html
+      output: web, pdf
+
+  - title: Upgrading
+    output: web, pdf
+    folderitems:
+
+    - title: Upgrading to a new version.
+      url: /mydoc_upgrading.html
+      output: web, pdf
+
+  - title: Problem Solving
+    output: web, pdf
+    folderitems:
+
+    - title: Common Errors
+      url: /mydoc_common_errors.html
+      output: web, pdf
+
+  - title: Market trend reactions
+    output: web, pdf
+    folderitems:
+
+    - title: Offsets
+      url: /mydoc_offsets.html
+      output: web, pdf
+
+    - title: Overrides
+      url: /mydoc_overrides.html
+      output: web, pdf
+    
+    - title: Volatility calculations
+      url: /mydoc_volatility_calculations.html
+      output: web, pdf
+
+  - title: Configuration
+    output: web, pdf
+    folderitems:
+
+    - title: General
+      url: /mydoc_general.html
+      output: web, pdf
+
+    - title: Hostsettings
+      url: /mydoc_hostsettings.html
+      output: web, pdf
+    
+    - title: Market Conditions
+      url: /mydoc_market_conditions.html
+      output: web, pdf
+
+    - title: Appsettings
+      url: /mydoc_appsettings.html
+      output: web, pdf
+
+    - title: Action groupings
+      url: /mydoc_action_groupings.html
+      output: web, pdf

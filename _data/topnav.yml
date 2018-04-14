@@ -1,0 +1,9 @@
+## Topnav single links
+## if you want to list an external url, use external_url instead of url. the theme will apply a different link base.
+topnav:
+- title: Topnav
+  items:
+    - title: Releases
+      external_url: https://github.com/mehtadone/PTFeeder/releases
+    - title: Profit Trailer WIKI
+      external_url: https://wiki.profittrailer.com
