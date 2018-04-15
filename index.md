@@ -29,21 +29,21 @@ grid_navigation:
     - title: Introduction
       excerpt: An introduction to PT Feeder, what it does and how to get it
       cta: Read more
-      url: 'docs/general'
+      url: '/docs/general'
     - title: Installation
       excerpt: Installation instructions for linux, windows and macOS
       cta: Read more
-      url: 'docs/installation'  
+      url: '/docs/installation'  
     - title: Configuration
       excerpt: How to setup PT Feeder, how offsets and overrides work and the volatility calculations and how they relate to trailing. 
       cta: Read more
-      url: 'docs/configuration'    
+      url: '/docs/configuration'    
     - title: Problem solving
       excerpt: A collection of common problems and their solutions
       cta: Read more
-      url: 'docs/problem_solving'    
+      url: '/docs/problem_solving'    
     - title: Release notes
       excerpt: A history of the PT Feeder release notes for reference
       cta: Read more
-      url: 'docs/release_notes'    
+      url: '/docs/release_notes'    
 ---
