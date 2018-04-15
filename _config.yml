@@ -1,6 +1,6 @@
 # Theme settings
 doks:
-    baseurl:
+    baseurl: /PTFeeder
     color_theme: red # Available themes: blue (default), green, purple, red and yellow
     header:
         logo:
