@@ -5,7 +5,8 @@ keywords:
 
 # Hero section
 title: PT Feeder Documentation
-description: Documentation for the official PT addon, PT Feeder
+description: THIS WIKI IS INCOMPLETE. PLEASE DO NOT USE UNTIL IT IS LINKED FROM THE GITHUB PAGE
+#description: Documentation for the official PT addon, PT Feeder
 buttons:
     - icon: github
       content: PT Feeder Releases
