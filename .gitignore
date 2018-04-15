@@ -1,6 +1,22 @@
-_site/
-.sass-cache/
-.jekyll-metadata
-_pdf
+# ------
+# Common
+# ------
+*~
 .DS_Store
-.idea
+.svn
+.cvs
+*.bak
+*.swp
+Thumbs.db
+
+# -----------------------
+# Local Development Tools
+# -----------------------
+/node_modules
+/npm-debug.log
+
+# ---------------
+# Compiled assets
+# ---------------
+.sass-cache
+_site
