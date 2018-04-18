@@ -1,6 +1,7 @@
 module.exports = {
     title: 'PT Feeder Docs',
     description: 'Everything you need to know about Profit Trailer\'s best buddy. Be sure to read their wiki too.',
+    base: '/PTFeeder/',
     themeConfig: {
         repo: 'mehtadone/PTFeeder',
         docsDir: 'docs',
