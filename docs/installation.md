@@ -28,7 +28,6 @@ Please follow our installation guides to make PT Feeder run on your system. Be a
 Should you need help installing PT-Feeder, check out the [PT Feeder Installation](https://cryptoprofitbot.com/shop/pt-feeder-install/) available for purchase at the CryptoProfitBot Store.
 
 
-
 __Important note:__ 
 
 PT Feeder is a companion app to Profit Trailer. It doesn't have its own interface. It generates configuration for Profit Trailer. For details on that please see [How PT Feeder works](https://github.com/mehtadone/PTFeeder/wiki/How-PT-Feeder-works).
@@ -48,7 +47,7 @@ After you have installed PT Feeder you need to start/stop it in addtion to Profi
 
 ### Install .NET SDK
 
-First of all install Dotnet Core by Microsoft. [You can get it the SDK from here](https://www.microsoft.com/net/learn/get-started/macos). Don't do anything else then Downloading and Installing the SDK from that page. Don't do the "Create your App" part on that page. You only need to install the SDK.
+First of all install Dotnet Core by Microsoft version 2.1.4 or higher. [You can get it the SDK from here](https://www.microsoft.com/net/download/dotnet-core/sdk-2.1.4). Don't do anything else then Downloading and Installing the SDK from that page. Don't do the "Create your App" part on that page. You only need to install the SDK.
 
 Microsoft has different selection of Linux choices there so take the one that fits your Distribution.
 
@@ -108,7 +107,7 @@ __Note:__ You can install PT and PTF either on your local Windows or on a Window
 
 ### Install .NET SDK
 
-First of all install Dotnet Core by Microsoft. [You can get it the SDK from here](https://www.microsoft.com/net/learn/get-started/windows). Don't do anything else then Downloading and Installing the SDK from that page.
+First of all install Dotnet Core by Microsoft version 2.1.4 or higher. [You can get it the SDK from here](https://www.microsoft.com/net/download/dotnet-core/sdk-2.1.4). Don't do anything else then Downloading and Installing the SDK from that page.
 
 ### Download and Unpack PT-Feeder
 
@@ -168,7 +167,7 @@ Make sure it works. You should see something similar than before.
 
 ### Install .NET SDK
 
-First of all install Dotnet Core by Microsoft. [You can get it the SDK from here](https://www.microsoft.com/net/learn/get-started/macos). Don't do anything else then Downloading and Installing the SDK from that page. Don't do the "Creat your App" part on that page. You only need to install the SDK.
+First of all install Dotnet Core by Microsoft. [You can get it the SDK from here](https://www.microsoft.com/net/download/dotnet-core/sdk-2.1.4). Don't do anything else then Downloading and Installing the SDK from that page. Don't do the "Creat your App" part on that page. You only need to install the SDK.
 
 ### Download and Unpack PT-Feeder
 
@@ -230,13 +229,6 @@ Activation works via Telegram. This is an automated process.
 Notes:
 1) You do not need to create a new API key, you will use the "Default" key from Profit Trailer. You will find this in your application.properties file in Profit Trailer folder, with the key default_apiKey = XXXXXXXXXXXX
 2) You can add up to 4 Exchange API keys with 1 PT Feeder License, if you wish to use PT Feeder on multiple bots. 
-
-# After installation but before running PT Feeder
-
-PT Feeder does generate your Profit-Trailer configuration files for you. It overwrites your own PAIRS, DCA and INDICATOR configuration. 
-
-Please make sure you run PT Feeder once before stating PT, and look at the configuration in the trading directory of Profit Trailer. Only start Profit Trailer if you are sure that config is how you want it to be.
-
 
 # Upgrade instructions 
 

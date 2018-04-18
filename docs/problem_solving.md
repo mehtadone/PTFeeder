@@ -22,35 +22,27 @@ page_nav:
 ---
 Here's a list of frequently appearing errors and some explanation and help added to it.
 
-### 1. Anything that says "Bad Json"
+#### Anything that says "Bad Json"
 
 Your hostsettings.json or appsettings.json has some incorrect syntax in it. Copy the contents of the file into a site like [this](http://jsonlint.com) and see where it notices any errors. 
 
-### 2. Api key errors.
+#### Api key errors.
 
-Check that the correct api key is registered with the PT Feeder api bot. It needs to be the default_apikey from your application.properties in your PT installation directory. The key in hostsettings.json of PT feeder is the one given to you by your reseller. If you want to see the key it is checking for and what is authorised, set the minimal log level in hostsettings.json to "Debug" from "Information"
+Check that the correct api key is registered with the PT Feeder api bot. It needs to be the default_api_key from your application.properties in your PT installation directory. The key in hostsettings.json of PT feeder is the one given to you by your reseller. If you want to see the key it is checking for and what is authorised, set the minimal log level in hostsettings.json to "Debug" from "Information"
 
-### 3. Sequence contains no element / Could not get BTC price change from all exchanges. Returning a massive value so you end up in superbear error
-
-Check that the timezone and time on your machine/vps is correct. PT uses your computer time to get prices from the exchange. If this is wrong, then the wrong prices will be queried from the exchange. This is a good tool for windows to check: [TimeZoneSync](http://www.timesynctool.com) 
-
-### 4. PT Feeder is overwriting my pairs.properites.
+#### PT Feeder is overwriting my Profit Trailer config.
 
 THIS IS WHAT PT FEEDER DOES. Please read the wiki again and watch any youtube videos on what it does. 
 
-### 5. How do I set up hodl coins?
+#### How do I set up hodl coins?
 
 Add your pair to ' "ExcludedPairs": "" in appsettings.json and restart PT Feeder. For example, "ExcludedPairs": "XRP,LTC". Wait for it create pairs.properties. No config will be generated for these pairs and default All_trading_enabled will be false so these coins will not be traded. 
 
-### 6. All my pairs are in watchmode
-
-Most likley, you have entered your PT folder location in the wrong exchange path in hostsettings.json. If you want binance, then your PT folder location needs to go into "BinancePairsLocation" not "TrexPairsLocation"
-
-### 7. Kestral Error
+#### Kestral Error
 
 This means the port in "ServerUrls" in hostsettings.json is already in use. Please change to another one and restart PT Feeder
 
-### 8. ERROR: -1013, Filter failure: MIN_NOTIONAL
+#### ERROR: -1013, Filter failure: MIN_NOTIONAL
 
 This is from the Profit Trailer announcement channel: 
 
@@ -71,7 +63,7 @@ This is from the Profit Trailer announcement channel:
 `also in configuration.properties`
 `ETH_dust = 0.0205`
 
-### 9. Buy will exceed min_buy_balance.
+#### Buy will exceed min_buy_balance.
 
 Please read this [wiki](https://wiki.profittrailer.io/doku.php/pairs.properties) and see how min_buy_balance/min_buy_balance_percentage and max_cost/max_cost_percentage works. 
 
@@ -79,7 +71,7 @@ Your settings are setup so you cannot make any further buys due to existing bala
 
 Important properties to look at in PT Feeder appsettings are DcaMinBuyBalance, MinBuyBalance and MaxCost and UseMinBuyBalancePercentage and UserMaxCostPercentage in hostsettings.json
 
-### 10. Kestrel starting errors
+#### Kestrel starting errors
 
 If you see errors like these...
 
@@ -91,11 +83,11 @@ Unable to start Kestrel.
 
 ...you have most likely changed the port in hostsettings.json to the same port your Profit Trailer is running on. This is not how it works. Leave this to the default for now or at least to a different port. This is for a future Web Interface and has nothing to do with connecting to PT.
 
-### 11. Could not get BTC price change from bittrex. Sequence contains no elements. Will try Polo next. 
+#### Could not get BTC price change from bittrex. Sequence contains no elements. Will try Polo next. 
 
 Most likely your Timezone setting on your system is off and/or your Time is not in Sync. Please check that your system Timezone is set to the Timezone you live in. To get a reliable Time Sync on Windows, check out this [freeware tool](http://www.timesynctool.com/).
 
-### 12. Errors with the Path to your Profit Trailer
+#### Errors with the Path to your Profit Trailer
 
 If you're seeing an error like this:
 
@@ -105,14 +97,14 @@ This is because you forgot to escape your backslashes. On windows the path to yo
 
     "ProfitTrailerFolder1": "C:\\pt\\vps\\pt\\polo",
 
-### 13. Not reading correct trigger
+#### Not reading correct trigger
 
 If you notice that the trigger is not being read correctly, check for any spaces in your config as the json syntax is very sensitive: 
 
 `"MaxTopCoinAverageChange ": "2" will break`
 `"MaxTopCoinAverageChange": "2" will work`
 
-### 14. Database error
+#### Database error
 
 If you see the following error, there are three things to try:
 
@@ -124,8 +116,10 @@ If you see the following error, there are three things to try:
 4. Set CalculateTrailingValues as false in hostsettings.json. In appsettings.json, change MaxTrailingProfit to TrailingProfit and MaxTrailingBuy to TrailingBuy. Follow step 1 again and restart feeder. 
 5. Try downgrading from 1.4.0 to [1.3.5](https://github.com/mehtadone/PTFeeder/releases/tag/pt-feeder-v1.3.5.329). This has slightly different database handling. 
 
-### 15. Could not find enough prices
+#### Could not find enough prices
 
 A warning like the below is nothing to worry about. It is when a new coin enters an exchange and there is not enough historical data for PT Feeder to do its calculations. 
 
 ` [21:12:00 WRN] Could not find enough prices for BTC-ELC. Querying exchange again`
+
+If this is happening to all coins, is is most likely your Timezone setting on your system is off and/or your Time is not in Sync. Please check that your system Timezone is set to the Timezone you live in. To get a reliable Time Sync on Windows, check out this [freeware tool](http://www.timesynctool.com/).

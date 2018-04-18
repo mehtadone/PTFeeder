@@ -23,11 +23,7 @@ page_nav:
 
 This is one of two basic configuration files for PTF. It contains some basic information:
 
-
-### Section: Host
-
-
-The config file is split into sections All these sections are surrounded by curly brackets like this
+The config files are split into sections All these sections are surrounded by curly brackets like this
 
     "Host": {
       "ProfitTrailerFolder1": "",
@@ -36,7 +32,13 @@ The config file is split into sections All these sections are surrounded by curl
       ...
     },
 
-The Host section is the first one containing these variables:
+# Hostsettings.json 
+
+This files contains settings are for the running of the application.
+
+## Section: Host 
+
+### Mandatory
 
 #### Folder Locations
 
@@ -52,31 +54,31 @@ As PT Feeder can support up to 4 Profit Trailer bots, you can add the following 
     "ProfitTrailerFolder3": "",
     "ProfitTrailerFolder4": "",
 
-On versions prior to 1.4.0, see [here](https://github.com/mehtadone/PTFeeder/wiki/Pre-1.4-Folder-Locations-in-hostsettings.json)
+#### Profit Trailer Endpoint
+
+    "ProfitTrailerApiEndPoint1": "http://locationhost:8081",
+
+This is the location of your Profit Trailer monitoring page. PT Feeder saves your settings using the Profit Trailer api so needs to know this location to know where to send the generated config. 
+
+Note that if you are using enforced SSL, you may need to give your full address as locahost may not be available on http. 
+
+As PT Feeder can support up to 4 Profit Trailer bots, you can add the following to your hostsettings.json file: 
+
+    "ProfitTrailerApiEndPoint1": "",
+    "ProfitTrailerApiEndPoint2": "",
+    "ProfitTrailerApiEndPoint3": "",
 
 #### HostName
 
     "HostName": "My PT-Feeder Bot1",
 
-The Name of your instance. When running multiple instances this helps to separate them in Telegram Messages.
+The Name of your instance. When running multiple instances this helps to separate them in Telegram/Discord Messages and is the name of your config in PT. 
 
 #### LicenseKey
 
     "LicenseKey": "XXXX-XXXX-XXXX-XXXX",
 
-This is the license key for PT Feeder provided to you by your reseller. Note that you also need to register your API key that you use on your bot with the PT Feeder License bot on Telegram. See our [License Activation page](https://github.com/mehtadone/PTFeeder/wiki/License-Registration-and-Activation) about details here.
-
-#### ServerUrls (leave default)
-
-    "ServerUrls": "http://localhost:5010",
-
-This is for later use and currently not used. Please leave the defaults in there. In the rare cased where this port (5010) is used on the system just change it to whatever free port.
-
-#### MarketConditionCheckInMinutes
-
-    "MarketConditionCheckInMinutes": "5",
-
-This is how often PT Feeder should check for changes in the market condition. 
+This is the license key for PT Feeder provided to you by your reseller. Note that you also need to register your API key that you use on your bot with the PT Feeder License bot on Telegram or Discord. See our [License Activation page](https://github.com/mehtadone/PTFeeder/wiki/License-Registration-and-Activation) about details here.
 
 #### CalculateTrailingValues
 
@@ -88,31 +90,35 @@ If `CalculateTrailingValues` is set to `false`, the value set in `MaxTrailingBuy
 
 If set to `true` the candles are used and the `MaxTrailingBuy` value will define define the cap that this value can get to. The same is true for `MaxTrailingProfit`
 
-#### UseMaxCostPercentage
+### Optional
 
-    "UseMaxCostPercentage": "true",
+These are not in the default hostsettings file that comes with Feeder but you can add them if needs be. 
 
-If this is set to `true`, then the `Cost` value in appsettings.json will use a percentage of your TCV. If this is set to false, then the `Cost` is an absolute value. 
+#### ServerUrls 
 
-#### UseMinBuyBalancePercentage
+    "ServerUrls": "http://localhost:5010",
 
-    "UseMinBuyBalancePercentage": "true",
+This is for later use and currently not used. Please leave the defaults in there. In the rare cased where this port (5010) is used on the system just change it to whatever free port.
 
-If this is set to `true`, then the `MinBuyBalance` value in appsettings.json will use a percentage of your TPV. If this is set to `false`, then the `MinBuyBalance` is an absolute value.
+#### MarketConditionCheckInMinutes
 
-#### BackupTradingFiles (from 1.3.5)
+    "MarketConditionCheckInMinutes": "5",
+
+This is how often PT Feeder should check for changes in the market condition. 
+
+#### BackupTradingFiles 
 
     "BackupTradingFiles": "true",
 
-Automatically create backups of your existing .properties files in your Profit Trailer trading directory on startup of PT Feeder. This can be switched off by settings this to false. 
+PT Feeder will save a copy of the config it generates in the trading/backup directory of your Profit Trailer directory. 
 
-#### TurnsToRegenerateFiles (from 1.3.5)
+#### TurnsToRegenerateFiles
 
     "TurnsToRegenerateFiles": "5",
 
 PT Feeder will regenerate Profit Trailer properties files every market condition change or this many times regardless. The default is 5.
 
-#### VolatilityDivider (from 1.3.5)
+#### VolatilityDivider 
 
     "VolatilityDivider ": "2",
 
@@ -125,13 +131,20 @@ When using CalculateTrailingValues, the default divisor of the upside or downsid
 
 The BotId and ChatId of your Telegram Bot if you are going to use one. PTF will notify you of market changes via this bot. Keep this secret.
 
-#### Test Mode (from version 1.3.3)
+#### DiscordBotToken and DiscordChatName`
+
+    "DiscordBotToken": "",
+    "DiscordChatName": "",
+
+The BotToken and ChatToken of your Discord Bot if you are going to use one. PTF will notify you of market changes via this bot. Keep this secret.
+
+#### Test Mode
 
     "TestMode": "true",
 
 If the test mode is set to true, then BTC_DOGE_trading_enabled = false, for all pairs. 
 
-### Section: Serilog
+## Section: Serilog 
 
     "Serilog": {
       "MinimumLevel": "Information"
@@ -139,125 +152,61 @@ If the test mode is set to true, then BTC_DOGE_trading_enabled = false, for all 
 
 Defines the log level. When set to `Debug` more information is logged to the console. Might help tracking down problems but usually `Information` should be good.
 
-## Configuration files of PTF
+# Appsettings.json 
 
-All configuration files of PTF are located within the `config` sub folder. When updating PTF to a new version, be sure not to overwrite this folder. Depending on the changes from the last update, the configuration files may need to be altered. Please be sure to review the Changelog for notes on that and/or also review the config files included in the download package to make sure you have everything important in your config.
+The appsettings.json file contains all the settings for you to setup to generate your PT config file.
 
-## Environment variable (from v1.4.0)
+## PT Feeder naming convention
 
-If you would like to move your config folder outside of your PT Feeder directory, the location specified in the environment variable PTFEEDER_CONFIG_DIRECTORY will be checked first. 
+PT Feeder follows a naming convention to translate into PT properties. PT Feeder will split the property name by case and insert _ to generate the PT property. There are three types of config in Profit Trailer. Pairs, DCA and indicators. The prefix of the PT Feeder property name determines where the property which is translated to ends up. Lets take a few examples. No prefix means it will go to pairs. 
 
+The common section and default section of the appsettings file will determine if it is a pair specific property or not. 
 
-The appsettings.json file is the second file of PTF configuration. It contains all your important tuning values that you wish to act it upon. Be sure to set this all right to your likings.
+**1. A property called MaxTradingPairs in the Common section of appsettings.**
 
+This has no prefix so will go into the pairs configuration. It will split at T and P. So this will get translation to Max_Trading_Pairs. 
 
-### Section: General
+**2. A property called DcaKeepBalance in the Common section of appsettings.**
 
-The General section of this file sets some basic values that partly get overridden and or mofidied in market or coin related sections later in the file. It is worth noting that PT Feeder generates coin specific overrides which in turn makes majority of the ALL_ properties obsolete. Only the ALL properties that not been overriden will have an impact on PT and they can be added in pairs.txt. 
+This has a prefix of Dca so will go into the DCA configuration. It will split at K and B so will go to Keep_Balance. 
 
-Before reading these, you should be familiar with the Profit Trailer properties that they get translated to. 
+**3. A property called IndicatorsBbLength in the Common section of appsettings.**
 
-**These can be found [here](https://wiki.profittrailer.io/doku.php) on the Profit Trailer wiki**
+This has a prefix of Indicators so will go into the indicators configuration. It will split at B and L so will go to Bb_Length.
+
+**3. A property called MaxBuySpread in the Default section of appsettings**
+
+This has no prefix so will go into the pairs config in PT.  It will be split at B and S and will have a DEFAULT property and a pair specific property. So this will go to DEFAULT_Max_Buy_Spread and ETH_Max_Buy_Spread for example. 
+
+**4. A property called DcaMaxBuySpread in the Default section of appsettings.**
+
+This has a DCA prefix so will go into the DCA config in PT. It will be split at B and S and will have a DEFAULT property and a pair specific property. So this will so to DEFAULT_Dca_Max_Buy_Spread and ETH_Dca_Max_Buy_Spread. 
+
+## Section: PtFeeder 
+
+The first section is the PtFeeder section and these are properties that are PT Feeder specific and **DO NOT** get converted to any PT property directly.
 
 #### BaseCurrency
 
     "BaseCurrency": "BTC"
 
-The Currency/Market your Bot is trading on. Should match the MARKET = BTC value in your PAIRS.properties file for ProfitTrailer. It is translated to the MARKET property. 
+his is needed by Feeder for its queries to the exchange and used as the MARKET for PT.
 
-#### MaxCost (was Cost pre v1.4)
+### Trailing calculation boundaries 
 
-    "MaxCost": "0.003"
+#### MaxTrailingBuy 
 
-The Base value for cost per trade. It will be modified later by market conditions but this is the Base value for these modifications. It is translated to the ALL_max_cost property in pairs.properties. If UseMaxCostPercentage in hostsettings.json is set to true, then this should be a percentage value. 
+    "MaxTrailingBuy": "0.25"
 
-#### BuyStrategy
+This is the maximum value the calculated trailing profit can be. All TrailingBuyOffset are based off this value. It is AFTER the calculation, translated to the ALL_trailing_buy property. See [here](https://github.com/mehtadone/PTFeeder/wiki/Trailing-Volatility) for more info about calculated trailing values
 
-    "BuyStrategy": "LOWBB"
-
-This the strategy to use for buying and all values should be entered that relate to this strategy. e.g A BuyValue of 50 makes no sense for SMASPREAD. It is translated to the ALL_buy_strategy property. 
-
-#### BuyValue
-
-    "BuyValue": "30"
-
-This is the default value to base the BuyValueOffset off and is used for the ALL_buy_value property. When moving from a positive to a negative BuyValue in the settings, you will need to change the sign of the BuyValueOffset to get the offset to move in the correct direction. **Don't forget to change it back once you change the BuyValue to positive again!** If you forget, your offset will move your BuyValue in the wrong direction. 
-
-***
-
-**WARNING!** In version 1.3.2 or older, if a negative value is used for BuyValue you will need to reverse all occurrences of BuyValueOffset in the config! Since the actual buy value is calculated as BuyValue + BuyValue * BuyValueOffset/100, when using negative BuyValue, it will make the calculated value higher when using a negative offset and vice versa. 
-
-Example: 
-
-BuyValue: "-10"
-
-BuyValueOffset: "-10"
-
-This will result in the calculated buy_value of -9 (because -10% of -10 is 1 and -10 plus 1 is -9) which is probably not what you want if you wanted to lower the value. Thus, for this to correctly work, you will have to swap the BuyValueOffset to +10 instead. 
-
-***
-
-#### BuyValueLimit
-
-    "BuyValueLimit": "0"
-
-This is the default value to base the BuyValueLimitOffset off and is used for the ALL_buy_value_limit property. This is only used for Cross and Spread strategies. This is an optional property
-
-#### SellValue
-
-    "SellValue": "1"
-
-This is the default value to base the SellValueOffset from, and is used for the ALL_sell_value property in PT. 
- 
-#### DcaEnabled
-
-    "DcaEnabled": "false" /  "DcaEnabled": "-3"
-
-This is the default value for DCA enabled. False always takes precedence, so if any value is false, DCA Enabled will always be false. It is translated to the ALL_DCA_enabled property. This can also be a negative value to trigger DCA after a percentage drop of price. The corresponding offset is DcaEnabled. 
-
-#### MinBuyBalance
-
-    "MinBuyBalance": "0.02"
-
-This is the property that gets translated to ALL_min_buy_balance. If UseMinBuyBalancePercentage is set to true, this should be a percentage value. 
-
-#### MaxTradingPairs (was NumberOfPairs pre v1.4)
-
-    "MaxTradingPairs": "15"
-
-This is the property that gets translated to ALL_max_trading_pairs. 
-
-#### ExcludedCoins (was ExcludedPairs pre v1.4)
-
-    "ExcludedCoins": "SAFEX,BNB,BTS,BTA,DAR,DRACO,SLING,CRYPT,DOGE,UNO,SC,INCNT,NAUT,SJCX,NOTE,TKN,TIME"
-
-These are pairs where no config is generated. The default list is made from coins that are or will be delisted from Bittrex. 
-
-#### EnabledCoinsOnly (was EnabledPairsOnly pre v1.4)
-
-    "EnabledCoinsOnly": "ETH,LTC"
-
-Basically the opposite of ExcludedCoins. Coins here will be the only ones configuration is generated for. If a coin is on the Excluded list and Enabled list, then the coin will be not have any config generated for it. (Excluded has precedence). If you want to have coins on SomOnlyCoins and you use the EnabledCoinsOnly feature you need to enable them on this list first before you can use them on SomOnlyCoins
-
-#### SomOnlyCoins (was SomOnlyPairs pre v1.4)
-
-    "SomOnlyCoins": "SAFEX,BNB,BTS,BTA,DAR,DRACO,SLING,CRYPT,DOGE,UNO,SC,INCNT,NAUT,SJCX,NOTE,TKN,TIME"
-
-These are pairs where coins are forced into sell only mode. 
-
-#### DcaExcludedCoins (was DcaExcluded pre v1.4)
-
-    "DcaExcludedCoins": "XRP"
-
-These are pairs where DCA is always false no matter what the override
-
-#### MaxTrailingProfit (this is only used when UseCalculatedTrailings is true in hostsettings from v1.4)
+#### MaxTrailingProfit 
 
     "MaxTrailingProfit": "0.25"
 
 This is the maximum value the calculated trailing profit can be. All TrailingProfitOffset are based off this value. It is translated to the ALL_trailing_profit property. See [here](https://github.com/mehtadone/PTFeeder/wiki/Trailing-Volatility) for more info about calculated trailing values
 
-#### MinTrailingBuy ((this is only used when UseCalculatedTrailings is true in hostsettings from v1.4))
+#### MinTrailingBuy
 
     "MinTrailingBuy": "0.05"
 
@@ -269,128 +218,45 @@ This is the minimum value the calculated trailing buy can be. See [here](https:/
 
 This is the minimum value the trailing profit can be. 
 
-#### TrailingProfit (from v1.4 and used only when UseCalculatedTrailings is false in hostsettings.json)
+### Coin  lists
 
-    "TrailingProfit": "0.5"
+#### ExcludedCoins
 
-This is the base value for your trailing profit. 
+    "ExcludedCoins": "SAFEX,BNB,BTS,BTA,DAR,DRACO,SLING,CRYPT,DOGE,UNO,SC,INCNT,NAUT,SJCX,NOTE,TKN,TIME"
 
-#### TrailingBuy (from v1.4 and used only when UseCalculatedTrailings is false in hostsettings.json)
+These are pairs where no config is generated. The default list is made from coins that are or will be delisted from Bittrex. 
 
-    "TrailingBuy": "0.5"
+#### EnabledCoinsOnly 
 
-This is the base value for your trailing profit. 
+    "EnabledCoinsOnly": "ETH,LTC"
 
-#### SellStrategy
+Basically the opposite of ExcludedCoins. Coins here will be the only ones configuration is generated for. If a coin is on the Excluded list and Enabled list, then the coin will be not have any config generated for it. (Excluded has precedence). If you want to have coins on SomOnlyCoins and you use the EnabledCoinsOnly feature you need to enable them on this list first before you can use them on SomOnlyCoins
 
-    "SellStrategy": "GAIN"
+#### SomOnlyCoins 
 
-This is the sell strategy. This gets translated to ALL_sell_strategy. 
+    "SomOnlyCoins": "SAFEX,BNB,BTS,BTA,DAR,DRACO,SLING,CRYPT,DOGE,UNO,SC,INCNT,NAUT,SJCX,NOTE,TKN,TIME"
 
-#### MinBuyPrice
+These are pairs where coins are forced into sell only mode. 
 
-    "MinBuyPrice": "0.0055"
+#### HiddenCoins 
 
-This gets translated to ALL_min_buy_price 
+    "HiddenCoins": "SAFEX,BNB,BTS,BTA,DAR,DRACO,SLING,CRYPT,DOGE,UNO,SC,INCNT,NAUT,SJCX,NOTE,TKN,TIME"
 
-#### MinBuyVolume (from v.1.3.6)
+These coins will be hidden from the PT Monitor. 
 
-    "MinBuyVolume": "500"
+#### DcaExcludedCoins 
 
-This gets translated to ALL_min_buy_volume 
+    "DcaExcludedCoins": "XRP"
 
-#### MaxBuySpread
+These are pairs where DCA is always false no matter what the override
 
-    "MaxBuySpread": "1"
+#### DcaIncludedCoins 
 
-This gets translated to ALL_max_buy_spread. This is an optional property
+    "DcaIncludedCoins": "XRP"
 
-#### MinProfit
+These are pairs where DCA is enabled only for the ones on the list
 
-    "MinProfit": "1"
-
-This gets translated to ALL_min_profit. Only applicable if your sell strategy is HIGHBB. This is an optional property
-
-#### BuyAvailableVolumeTrigger (from v1.4.0)
-
-    "BuyAvailableVolumeTrigger": "150"
-
-This gets translated to ALL_buy_available_volume_trigger in pairs.properites. This is an optional property
-
-#### RebuyTimeout (from v1.4.0)
-
-    "RebuyTimeout": "5"
-
-This gets translated to ALL_rebuy_timeout in dca.properites. This is an optional property
-
-#### DcaTrailingBuy
-
-    "DcaTrailingBuy": "0.15"
-
-This is the base value of the DCA trailing buy. This is used for generation in dca.properties. Note that this is not pair specific.  
-
-#### DcaTrailingProfit
-
-    "DcaTrailingProfit": "0.15"
-
-This is the base value of the DCA trailing profit. This is used for generation in dca.properties. Note that this is not pair specific.  
-
-#### DcaMinBuyBalance
-
-    "DcaMinBuyBalance": "10"
-
-This is the property that gets translated to min_buy_balance in dca.properties. If UseMinBuyBalancePercentage is set to true, this should be a percentage value.  
-
-
-#### DcaMaxCost
-
-    "DcaMaxCost": "0"
-
-This is the property that gets translated to max_cost in dca.properties. 
-
-#### DcaMaxBuyTimes
-
-    "DcaMaxBuyTimes": "5"
-
-This is translated to max_buy_times in dca.properites. Note this is not pair specific. 
-
-#### DcaSellStrategy
-
-    "DcaSellStrategy": "GAIN"
-
-This is translated to sell_strategy in dca.properites. Note this is not pair specific. 
-
-#### DcaSellValue
-
-    "DcaSellValue": "0.75"
-
-This is translated to sell_value in dca.properites. Note this is not pair specific. 
-
-#### DcaSellTrigger
-
-    "DcaSellTrigger": "0.6"
-
-This is translated to sell_trigger in dca.properites. Note this is not pair specific. This is an optional property
-
-#### DcaMaxBuySpread
-
-    "DcaMaxBuySpread": "1.5"
-
-This is translated to max_buy_spread in dca.properites. Note this is not pair specific. This is an optional property
-
-#### DcaBuyAvailableVolumeTrigger (from v1.4.0)
-
-    "DcaBuyAvailableVolumeTrigger": "150"
-
-This gets translated to buy_available_volume_trigger in dca.properites. Note this is not pair specific. This is an optional property
-
-#### DcaRebuyTimeout (from v1.4.0)
-
-    "DcaRebuyTimeout": "5"
-
-This gets translated to rebuy_timeout in dca.properites. Note this is not pair specific. This is an optional property
-
-
+### Trend measurement 
 
 #### TopCurrenciesToCheck
 
@@ -411,111 +277,268 @@ This is how many minutes to measure the shorter trend, up to a maximum of 4320. 
 This is how many minutes to measure the longer trend, up to a maximum of 4320. It is used for the LongerTermPriceChange offset grouping
 
 
-PT Feeder is always in one market condition. Each market condition has its corresponding folder where any non generated properties by PT Feeder can be added to the corresponding txt file. 
+## Section: Common 
+
+All properties in this section get translated to properties in PT config, without DEFAULT in front of them and follow the PT Feeder naming convention and **DO NOT** have pair specific overrides. To see all the properties possible, familiarise yourself with the [Profit Trailer wiki](http://wiki.profittrailer.com/doku.php)
+
+Examples of properties that can be placed in this section are:
+
+```
+    "MaxTradingPairs": "10"
+    "StartBalance": "2.1827",
+
+
+    //DCA
+    "DcaKeepBalance": "0",
+    "DcaKeepBalancePercentage": "0",
+
+    // Indicators
+    "IndicatorsBbStd": "2",
+    "IndicatorsBbCandlePeriod": "300",
+    "IndicatorsBbLength": "20",
+```
+
+## Section: Defaults
+
+All properties in this section get translated to PT properties, based on the PT Feeder naming convention, with DEFAULT_ at the beginning and also have pair specific overrides. To see all the properties possible, familiarise yourself with the [Profit Trailer wiki](http://wiki.profittrailer.com/doku.php)
+
+Examples of what can be placed in this section are below:
+
+```
+ 
+    "InitialCost": "0",
+    "InitialCostPercentage": "7",
+
+    "ABuyStrategy": "EMACROSS",
+    "ABuyValue": "-0.01",
+    "ABuyValueLimit": "-3",
+
+    "DcaEnabled": "-1",
+    "MaxBuySpread": "3",
+    "MinOrderbookVolumePercentage": "101",
+    "RebuyTimeout": "15",
+
+    // Sell strategy properties
+    "ASellStrategy": "GAIN",
+    "ASellValue": "0.5",
+
+    // coin filters
+    "MinBuyPrice": "0",
+    "MinBuyVolume": "500",
+
+    // DCA Properties
+    //buy
+    "DcaMaxCost": "1",
+    "DcaMaxBuyTimes": "20",
+
+    // DCA buy strategies
+    "DcaABuyStrategy": "EMACROSS",
+    "DcaABuyValue": "-0.01",
+    "DcaABuyValueLimit": "-10",
+
+    "DcaBuyPercentage": "100",
+    "DcaBuyTrigger": "-1",
+
+    // DCA sell strategies
+    "DcaASellStrategy": "GAIN",
+    "DcaASellValue": "1.5",
+```
+## Section: Groupings
+
+The groupings in the appsettings file are your triggers and the action you want to happen to it if the trigger condition is true. 
+
+There are two types of groupings, ones that apply to all pairs and the only groupings that fall into this section are Market Conditions and Exchanges. 
+
+All other groupings are pair specific and only apply if the trigger is true based on the pair specific trend or property. 
+
+Each groupings follows the same pattern. A trigger and the offsets or overrides to apply. Below is an example. 
+
+```
+ "PriceTrendChangeGrouping": {
+    "Configs": [
+      {
+        "MaxPriceTrendPercentageChange": "-10",   // <--- THIS IS THE TRIGGER 
+        "MinBuyVolumeOffset": "-50", // <--- THESE ARE OFFSETS TO APPLY
+        "StartBalanceOffset": "-31.28",
+        "Override": {
+          "BBuyValue": "20" <--- THESE ARE OVERRIDES
+          "BBuyStrategy": "LOWBB",
+          "Weight": "10"
+        }
+      }
+    ]
+  },
+``` 
+ 
 
 ## Market Conditions
 
-Each section of the market condition is checked sequentially. 
+In the below example, there are three market conditions, bear, boring and bull. The market condition grouping can have multiple triggers, and also needs a `name` property. Multiple triggers are treated as an OR, which means if any of the triggers are true, then the market condition applied. The triggers that can be used in market conditions are described below.
 
-    "FolderName": "01-superbear",
-    "MaxTopCoinAverageChange": "-3",
-    "MinBaseCoinPriceChange": "2",
-    "SellOnlyMode": "true",
-    "DcaEnabled": "false",
-    "TrailingProfitOffset": "-20",
-    "SellValueOffset": "-20"
+Each section of the grouping is checked sequentially and only the first one that is true will be applied.  
 
-In this example above we have: 
+```
+"MarketConditionsGrouping": {
+    "Configs": [
+      {
+        "Name": "Bear", // <- A name to identify the market condition
+        "MaxTopCoinAverageChange": "-5",
+        "DcaStopLossTriggerOffset": "-100",
+        "ABuyValueOffset": "-500", 
+        "ABuyValueLimitOffset": "-200"
+      },
+      {
+        "Name": "Boring",
+        "MaxTopCoinAverageChange": "2.5"
+      },
+      {
+        "Name": "Bull",
+        "MaxTopCoinAverageChange": "5",
+        "InitialCostPercentageOffset": "-20"
+      }
+    ]
+  },
+```
+
+### Market condition triggers
 
   `"MaxTopCoinAverageChange": "-3"`
 
-This is saying that if the maximum change of the top coins from your configured exchanges is less than this max of -3% (e.g -5%), then we are in this market condition and will use the below offsets. The number of coins whose percentage price change is measured is configured in TopCurrenciesToCheck in the [General Section](https://github.com/mehtadone/PTFeeder/wiki/appsettings.json---General) of appsettings.json. 
+This is saying that if the maximum change of the top coins from your configured exchanges is less than this max of -3% (e.g -5%), then we are in this market condition and will use the below offsets. The number of coins whose percentage price change is measured is configured in TopCurrenciesToCheck in the [Default Section](https://github.com/mehtadone/PTFeeder/wiki/appsettings.json---General) of appsettings.json. This uses the MinutesToMeasureTrend from the Default section of appsettings. 
+
+  `"MaxTopCoinLongTermAverageChange": "-3"`
+
+Same as above buts uses the MinutesForLongerTermTrend from the Default section of appsettings. 
 
  `"MinBaseCoinPriceChange": "3",`
 
-This is saying that if the minimum change of your base coin (e.g ETH or BTC) against USDT is more than this min of 2% (e.g 5%), then we are in this market condition and will use the below offsets. **Note that this does not work currently when  your base coin is USDT.**
+This is saying that if the minimum change of your base coin (e.g ETH or BTC) against USDT is more than this min of 2% (e.g 5%), then we are in this market condition and will use the below offsets. This uses the MinutesToMeasureTrend from the Default section of appsettings. **Note that this does not work currently when  your base coin is USDT.**
 
-The above two are OR. If one OR the other is true, then this is the market condition. You can also use just one of these properties, if so desired. Just delete the property you do not wish to use. 
+  `"MinBaseCoinLongTermPriceChange": "-3"`
 
-The rest of the items can be anything from the [pairs offset list](https://github.com/mehtadone/PTFeeder/wiki/appsettings.json---Offset-List) or [DCA offset list](https://github.com/mehtadone/PTFeeder/wiki/appsettings.json---DCA-Offset-List). 
+Same as above buts uses the MinutesForLongerTermTrend from the Default section of appsettings. 
 
-## Action groupings 
+ `"MaxVwapTrendChange": "3",`
+
+This caluclated the volume weighted average price for all coins that have been selected by your PT Feeder config and the value is an average of these. This excludes coins in your SOM list, below your min volume and in your excluded list. This uses the MinutesToMeasureTrend from the Default section of appsettings. 
+
+  `"MaxTopCoinAverageChange": "-3"`
+
+Same as above buts uses the MinutesForLongerTermTrend from the Default section of appsettings. 
+
+## Pair groupings 
 
 Each of the following section are optional. If you do not need them, you can remove any section or grouping but be sure to keep the json format. You can copy and paste the contents of the appsettings.json file to [this site](https://jsonformatter.curiousconcept.com/) to make sure it is correct. 
 
 Remember as with anything in the appsettings.json, the sections in each grouping are checked sequentially in order, so the first group that matches will be the group settings that are used. 
 
-Below are the criteria for each section to be true. For each of the section, you can add any property from the offset list. You can also add as many sections in each grouping as you like. 
+Below are the triggers for each section to be true. For each of the section, you can offet or override any PT property. You can also add as many sections in each grouping as you like. 
 
-### Price
+To add a grouping, this is the format:
 
-`"MaxPrice": "0.001"`
+```
+ "DownsideVolatilityGrouping": { <-- This is the grouping name
+    "Configs": [
+      {
+        "MaxChangeFromOpen": "1.5" <-- This is the trigger
+      },
+      {
+        "MaxChangeFromOpen": "1000", <-- This is the trigger. 
+        "SellOnlyModeEnabled": "true",
+        "DcaASellValueOffset": "-50", 
+      }
+    ]
+  }
+```
+
+### PriceGrouping
+
+**Trigger** - `"MaxPrice": "0.001"`
 
 If the price is lower than this maximum, then these offsets will apply. In the case above, anything lower than 0.001 BTC, this section will apply. 
 
-### Volume
+### VolumeGrouping
 
-`"MaxVolume": "200"`
+**Trigger** `"MaxVolume": "200"`
 
 If the volume is lower than this maximum, then these offsets will apply. In the case above, anything lower than 200 BTC, this section will apply. Note that this over a 24 hour period. 
 
-### PriceTrendChange
+### PriceTrendChangeGrouping
 
-`"MaxPriceTrendPercentageChange": "-5"`
+**Trigger** `"MaxPriceTrendPercentageChange": "-5"`
 
-If price change for a coin is less than this maximum over the period defined in MinutesToMeasureTrend, then the offsets defined will apply. This is the price at the end of the time window subtracted from the price and the start of the time window. 
+If price change for a coin is less than this maximum over the period defined in MinutesToMeasureTrend, then the offsets defined will apply. This is the price at the end of the time window subtracted from the price and the start of the time window.
 
-### LongerTermPriceChange 
+A community trading view script that shows this has been developed by Squiggles and can be found [here](https://uk.tradingview.com/script/npxFL6cG-PTF-Short-and-Long-Term-Price-Change-for-Profit-Trailer-Feeder/) 
 
-`"MaxPriceTrendPercentageChange": "-5"`
+### LongerTermPriceChangeGrouping
+
+**Trigger** `"MaxPriceTrendPercentageChange": "-5"`
 
 If price change for a coin is less than this maximum over the period defined in MinutesForLongerTermTrend, then the offsets defined will apply. This is the price at the end of the time window subtracted from the price and the start of the time window. 
 
-### Exchange (version 1.4 +)
+A community trading view script that shows this has been developed by Squiggles and can be found [here](https://uk.tradingview.com/script/npxFL6cG-PTF-Short-and-Long-Term-Price-Change-for-Profit-Trailer-Feeder/) 
 
-`"ExchangeName": "Bittrex"`
+### ExchangeGrouping
+
+**Trigger** `"ExchangeName": "Bittrex"`
 
 Offsets can be applied if the exchange name matches the ExchangeName property. Can be used to alter things like the MinBuyVolume per exchange if PT Feeder is being used to drive multiple bots on different exchanges. The options are Bittrex, Poloniex and Binance
 
-### HighLowPricePercentage (version 1.4 +)
+### HighLowPricePercentageGrouping
 
-`"MaxHighLowPricePercentage": "-5"`
+**Trigger** `"MaxHighLowPricePercentage": "-5"`
 
 This is a property to try and check the variance of the price from the norm and is over the MinutesToMeasureTrend time window. The math is: 
 
 		firstVariance = (high.ActualPrice - low.ActualPrice) / 2
 		medianVariance = high.ActualPrice - firstVariance
 		highLowPercentage = (latestActualPrice - medianVariance) / latestActualPrice * 100
+       
+A community trading view script that shows this has been developed by Squiggles and can be found [here](https://uk.tradingview.com/script/QdZJvmj5-PTF-HighLowPricePercentage-for-Profit-Trailer-Feeder/) 
 
-### LongerTermHighLowPricePercentage  (version 1.4 +)
+### LongerTermHighLowPricePercentageGrouping
 
-`"MaxHighLowPricePercentage": "-5"`
+**Trigger** `"MaxHighLowPricePercentage": "-5"`
 
 This is a property to try and check the variance of the price from the norm and is over the LongerTermMinutesToMeasureTrend time window. The math is the same as the HighLowPricePercentage
 
-### DownsideVolatility
+A community trading view script that shows this has been developed by Squiggles and can be found [here](https://uk.tradingview.com/script/QdZJvmj5-PTF-HighLowPricePercentage-for-Profit-Trailer-Feeder/) 
 
-`"MaxChangeFromOpen": "0.1"`
+### DownsideVolatilityGrouping
+
+**Trigger** `"MaxChangeFromOpen": "0.1"`
 
 The downside volatility is measured as the average change as a percentage between the open and low of the 5 minute candles over a period defined in MinutesToMeasureTrend. If this is less than 0.1%, then the offsets apply. 
 
-### UpsideVolatility
+A community trading view script that shows this has been developed by Squiggles and can be found [here](https://uk.tradingview.com/script/4Mn1YoY8-PTF-UpDownVolatility-for-Profit-Trailer-Feeder/) 
 
-`"MaxChangeFromOpen": "0.1"`
+### UpsideVolatilityGrouping
+
+**Trigger** `"MaxChangeFromOpen": "0.1"`
 
 The upside volatility is measured as the average change as a percentage between the open and high of the 5 minute candles over a period defined in MinutesToMeasureTrend. If this is less than 0.1%, then the offsets apply. 
 
-### UpsideDownsideVolatilityDifference  (version 1.4 +)
+A community trading view script that shows this has been developed by Squiggles and can be found [here](https://uk.tradingview.com/script/4Mn1YoY8-PTF-UpDownVolatility-for-Profit-Trailer-Feeder/) 
 
-`"MaxUpsideDownsideVolatilityDifference": "0.1"`
+### UpsideDownsideVolatilityDifferenceGrouping
+
+**Trigger** `"MaxUpsideDownsideVolatilityDifference": "0.1"`
 
 This is the difference from the upside and downside volatility. 
 
-### AverageCandleSize
+### AverageCandleSizeGrouping
 
-`"MaxPercentageSizeOfPrice": "0.1"`
+**Trigger** `"MaxPercentageSizeOfPrice": "0.1"`
 
 The average candle size is the addition of the upside and downside volatiltiy. If this is less than 0.1%, then the offsets apply. 
+
+### NewCoinsGrouping
+
+**Trigger** `"CoinAge": "0.1"`
+**ExtraProperty** `"TimeUnit":"Days"`
+
+Apply offsets and overrides for any coin that has an age younger than the CoinAge specified. The extra property, TimeUnit must be provided and can be Days, Hours, Minutes, Seconds or Milliseconds. 
 
 ## Offset Calculation 
 
@@ -551,14 +574,14 @@ and one more with a positive offset
 
 ***
 
-## 0 Default
+#### Default of 0
 
 One thing to note if that if you have a 0 default value, none of the above calculations will take effect as a percentage of 0 is 0. The only workaround for this at the moment is using a very very small number such as 0.001 and using an offset based on that. 
 
 
 ## Overrides
 
-As of version **1.5.0**, the Buy Strategy can be overridden in any grouping. This means you can do things like change buy strategies: 
+As well as offsetting, you can also override any property in any grouping. 
 
 * For each market condition
 * For different volume coins
@@ -566,21 +589,24 @@ As of version **1.5.0**, the Buy Strategy can be overridden in any grouping. Thi
 etc. 
 
 The syntax to do this is: 
-
+```
 		"FolderName": "02-boring",
 			"MaxTopCoinAverageChange": "0.5",
-			"BuyStrategy": {
+			"Overrides": {
 				"BuyValue": "10",
 				"BuyStrategy": "LOWBB",
 				"Weight": "55"
 			}
+```
 
  
 The above is saying that if the top coins have changes less than 0.5%, then it is a boring market. In this market, I want to override my default buy strategy in the general section of appsettings.json with LOWBB with a buy value of 10. 
 
 #### Weight
 
-The weight is a mandatory property which is required when there are one or more buy strategy overrides. For example, if you have overriden the buy strategy to EMAGAIN in a boring market condition, and also LOWBB for high volume coins, then PT Feeder needs to know which one to choose. The one with the highest weight is chosen. If there are two buy strategy overrides for the same coin, then the first one that it finds will be used. 
+The weight is a property which is required when there are one or more buy strategy overrides. If it is not supplied, a weight of 0 is used. 
+
+For example, if you have overriden the buy strategy to EMAGAIN in a boring market condition, and also LOWBB for high volume coins, then PT Feeder needs to know which one to choose. The one with the highest weight is chosen. If there are two buy strategy overrides for the same coin, then the first one that it finds will be used. 
 
 #### Offsets
 
@@ -594,12 +620,29 @@ It does this by looking at all the five minute candles over the period defined i
 
 It then takes the open price and the high price to see what was its upside movement of each of these and then gets an average of all the candles in that period. This is what PT Feeder calls the **upside volatility**. The same applies for the open and low price and is what PT Feeder calls the **downside volatility**. 
 
+To see this in action, PuppyTherapy created a TradingView script [here](https://www.tradingview.com/script/4zHMsNkV-PT-Feeder-Upside-Downside-Volatility-Difference-Candlesize/) and 
+
 ### Where this is used. 
 
-#### Trailing Values
+#### Trailing Values / CalculateTrailingValues
 
 If CalculateTrailingValues is set to true in hostsettings.json, then for the base of the trailing profit, the upside volatility divided by two is used as the base from which to offset. It is divided by two because if we used the actual upside volatility, then we would be trailing the candle up to the top and then all the way back to the open again. The same goes for trailing buy and the downside volatility. 
 
 #### Offset Groupings
 
 You can also apply offsets based on the actual upside and downside volatility. You can also take the addition of these two to offset the whole candle size average in a grouping called AverageCandleSize
+
+# Moving config directory
+
+If you would like to move your config folder outside of your PT Feeder directory, the location specified in the environment variable PTFEEDER_CONFIG_DIRECTORY will be checked first. 
+
+The appsettings.json file is the second file of PTF configuration. It contains all your important tuning values that you wish to act it upon. Be sure to set this all right to your likings.
+
+# Trading View Scripts
+
+A collection of community developed tradingview scripts can be found below:
+
+- [HighLowPriceChangePercentage by Squiggles] (https://uk.tradingview.com/script/QdZJvmj5-PTF-HighLowPricePercentage-for-Profit-Trailer-Feeder/)
+- [Upside and downside volatility by Squiggles](https://uk.tradingview.com/script/4Mn1YoY8-PTF-UpDownVolatility-for-Profit-Trailer-Feeder/)
+- [Upside and downside volatility by PuppyTherapy](https://www.tradingview.com/script/4zHMsNkV-PT-Feeder-Upside-Downside-Volatility-Difference-Candlesize/)
+- [Price Trend Change by Squiggles](https://uk.tradingview.com/script/npxFL6cG-PTF-Short-and-Long-Term-Price-Change-for-Profit-Trailer-Feeder/)
