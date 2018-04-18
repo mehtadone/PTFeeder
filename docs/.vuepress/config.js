@@ -1,6 +1,6 @@
 module.exports = {
     title: 'PT Feeder Docs',
-    description: 'Everything you need to know about Profit Trailer\'s best buddy',
+    description: 'Everything you need to know about Profit Trailer\'s best buddy. Be sure to read their wiki too.',
     themeConfig: {
         repo: 'mehtadone/PTFeeder',
         docsDir: 'docs',
@@ -11,8 +11,9 @@ module.exports = {
           { text: 'General', link: '/general' },
           { text: 'Installation', link: '/installation' },
           { text: 'Configuration', link: '/configuration' },
-          { text: 'Problem Solving', link: '/problem-solving' },
-          { text: 'Release Notes', link: '/release-notes' },
+          { text: 'Problem Solving', link: '/problemsolving' },
+          { text: 'Release Notes', link: '/releasenotes' },
+          { text: 'PT Wiki', link: 'https://wiki.profittrailer.com/doku.php' },
         ],
         sidebar: [
             '/',

@@ -1,24 +1,12 @@
 ---
-# Page settings
-layout: default
-keywords:
-comments: false
-
-# Hero section
 title: Installation
 description: This is how you install PT Feeder on different operatating systems
 
-# Micro navigation
-micro_nav: true
+meta:
+  - name: Installation
+    content: This is how you install PT Feeder on different operatating systems
 
-# Page navigation
-page_nav:
-    prev:
-        content: Introduction
-        url: '/docs/general'
-    next:
-        content: Configuration
-        url: '/docs/configuration'
+sidebar: auto
 ---
 
 Please follow our installation guides to make PT Feeder run on your system. Be aware that PT-Feeder is not a playful Utility with colorful buttons and a shiny UI. It is a power tool, that works nearly completely from the command line. Make sure you are safe enough to handle your operating system good enough and that you are able to edit configuration text files without breaking them.
@@ -27,35 +15,35 @@ Please follow our installation guides to make PT Feeder run on your system. Be a
 
 Should you need help installing PT-Feeder, check out the [PT Feeder Installation](https://cryptoprofitbot.com/shop/pt-feeder-install/) available for purchase at the CryptoProfitBot Store.
 
-
 __Important note:__ 
 
-PT Feeder is a companion app to Profit Trailer. It doesn't have its own interface. It generates configuration for Profit Trailer. For details on that please see [How PT Feeder works](https://github.com/mehtadone/PTFeeder/wiki/How-PT-Feeder-works).
+PT Feeder is a companion app to Profit Trailer. It doesn't have its own interface. It generates configuration for Profit Trailer. For details on that please see [How PT Feeder works](/general.html#how-pt-feeder-works).
 
 After you have installed PT Feeder you need to start/stop it in addtion to Profit Trailer.
 
-# Linux
 
-## Technical Requirements
+## Install .NET SDK
+
+
+First of all install Dotnet Core by Microsoft version 2.1.4 or higher for your operating system. [You can get it the SDK from here](https://www.microsoft.com/net/download/dotnet-core/sdk-2.1.4). Don't do anything else then Downloading and Installing the SDK from that page. Don't do the "Create your App" part on that page. You only need to install the SDK.
+
+Microsoft has different selection of Linux choices there so take the one that fits your Distribution.
+
+## Linux
+
+### Technical Requirements
 
 - Linux (we're mostly using Ubuntu 16.04 LTS but that's up to you)
 - At least 1GB RAM (2GB is better, but PT + PTF also run on 1GB VPS)
 - .NET SDK
 - A solid Text Editor. Nano, vi or whatever fits you most is fine.
 
-## Start the installation
-
-### Install .NET SDK
-
-First of all install Dotnet Core by Microsoft version 2.1.4 or higher. [You can get it the SDK from here](https://www.microsoft.com/net/download/dotnet-core/sdk-2.1.4). Don't do anything else then Downloading and Installing the SDK from that page. Don't do the "Create your App" part on that page. You only need to install the SDK.
-
-Microsoft has different selection of Linux choices there so take the one that fits your Distribution.
 
 ### Download and Unpack PT-Feeder
 
 Now head to [the Release Page of PT-Feeder](https://github.com/mehtadone/PTFeeder/releases) and download your copy. It's that link they say something likes ```pt-feeder-v1.x.y.123.zip```. Grab the URL and download the package using wget or whatever fits you best. Unpack the zip file and copy it to a location of your choice. We keep it in /opt most of the time but that's up to you of course.
 
-## Configure & Start PT Feeder
+### Configure & Start PT Feeder
 
 ### Configure PT Feeder to your needs
 
@@ -88,13 +76,13 @@ IMPORTANT: Once PT-Feeder was added to your PM2 installation you can start and s
 
 Note: You can also add PT to PM2 if you haven't already. There's a similar pm2-file in the folder of your Profit Trailer. Adding it works the same way and you can then use PM2 to comfortably manage both tools.
 
-## Any Problems? 
+### Any Problems? 
 
-[Check the Common Errors Page](https://github.com/mehtadone/PTFeeder/wiki/Common-errors)
+[Check the Common Errors Page](/problemsolving.html)
 
-# Windows
+## Windows
 
-## Technical Requirements
+### Technical Requirements
 
 __Note:__ You can install PT and PTF either on your local Windows or on a Windows VPS in a Datacenter. This is a more generic installation instruction that should work on both.
 
@@ -103,17 +91,13 @@ __Note:__ You can install PT and PTF either on your local Windows or on a Window
 - .NET SDK
 - A solid Text Editor. Best practice is to use [Notepad++](https://notepad-plus-plus.org/) or [Atom](https://atom.io) on Windows
 
-## Start the installation
-
-### Install .NET SDK
-
-First of all install Dotnet Core by Microsoft version 2.1.4 or higher. [You can get it the SDK from here](https://www.microsoft.com/net/download/dotnet-core/sdk-2.1.4). Don't do anything else then Downloading and Installing the SDK from that page.
+#### Start the installation
 
 ### Download and Unpack PT-Feeder
 
 Now head to [the Release Page of PT-Feeder](https://github.com/mehtadone/PTFeeder/releases) and download your copy. It's that link they say something like ```pt-feeder-v1.x.y.123.zip``` Unpack this ZIP-File into a location of your choice. It is best practice to look for a folder anywhere in the user directory. Don't just leave it in your downloads or the desktop or you might easily mess up. Also rename the folder to something general like pt-feeder so it can stay there for every new version too.
 
-## Configure & Start PT Feeder
+### Configure & Start PT Feeder
 
 ### Configure PT Feeder to your needs
 
@@ -150,30 +134,26 @@ Both lines should go into that file. Now save it to the folder where PT Feeder i
 
 Make sure it works. You should see something similar than before.
 
-## Any Problems? 
+### Any Problems? 
 
-[Check the Common Errors Page](https://github.com/mehtadone/PTFeeder/wiki/Common-errors)
+[Check the Common Errors Page](/problemsolving.html)
 
-# macOS
+## macOS
 
-## Technical Requirements
+### Technical Requirements
 
 - macOS (10.7 or higher should be fine)
 - At least 4GB RAM
 - .NET SDK
 - A solid Text Editor. Best practice is to use [Atom](https://atom.io) or [Visual Studio Code](https://code.visualstudio.com/)
 
-## Start the installation
-
-### Install .NET SDK
-
-First of all install Dotnet Core by Microsoft. [You can get it the SDK from here](https://www.microsoft.com/net/download/dotnet-core/sdk-2.1.4). Don't do anything else then Downloading and Installing the SDK from that page. Don't do the "Creat your App" part on that page. You only need to install the SDK.
+### Start the installation
 
 ### Download and Unpack PT-Feeder
 
 Now head to [the Release Page of PT-Feeder](https://github.com/mehtadone/PTFeeder/releases) and download your copy. It's that link they say something likes ```pt-feeder-v1.x.y.123.zip``` Unpack this ZIP-File into a location of your choice. It is best practice to look for a folder anywhere in the user directory. Don't just leave it in your downloads or the desktop or you might easily mess up. Also rename the folder to something general like pt-feeder so it can stay there for every new version too.
 
-## Configure & Start PT Feeder
+### Configure & Start PT Feeder
 
 ### Configure PT Feeder to your needs
 
@@ -208,11 +188,11 @@ IMPORTANT: Once pt feeder was add to your PM2 installation you can start and sto
 
 Note: You can also add PT to PM2 if you haven't already. There's a similar pm2-file in the folder of your Profit Trailer. Adding it works the same way and you can then use PM2 to comfortably manage both tools.
 
-## Any Problems? 
+### Any Problems? 
 
-[Check the Common Errors Page](https://github.com/mehtadone/PTFeeder/wiki/Common-errors)
+[Check the Common Errors Page](/problemsolving.html)
 
-# License activation
+## License activation
 
 This is how you activate your PT Feeder License.
 
@@ -230,7 +210,7 @@ Notes:
 1) You do not need to create a new API key, you will use the "Default" key from Profit Trailer. You will find this in your application.properties file in Profit Trailer folder, with the key default_apiKey = XXXXXXXXXXXX
 2) You can add up to 4 Exchange API keys with 1 PT Feeder License, if you wish to use PT Feeder on multiple bots. 
 
-# Upgrade instructions 
+## Upgrade instructions 
 
 Whenever a new version comes out you need to care about updating your PT Feeder. Here's a simple explanation of how this works.
 

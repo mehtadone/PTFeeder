@@ -1,42 +1,30 @@
 ---
-# Page settings
-layout: default
-keywords:
-comments: false
-
-# Hero section
 title: Introduction
-description: Below is a basic run through of what PT Feeder is, where you can find out more about it and where you can get it.  
+lang: en-US
 
-# Micro navigation
-micro_nav: true
+meta:
+  - name: Introduction
+    content: Below is a basic run through of what PT Feeder is, where you can find out more about it and where you can get it.  
 
-# Page navigation
-page_nav:
-    prev:
-        content: Home
-        url: '/'
-    next:
-        content: Installation
-        url: '/docs/installation'
+sidebar: auto
 ---
+
 
 THIS WIKI IN IN PROGRESS. PLEASE USE THE GITHUB WIKI UNTIL THIS ALERT IS REMOVED.
 
 #### Is this your first time with PT-Feeder? 
 
-Check our [Newcomer Checklist](#Newcomer-Checklist)
+Check our [Newcomer Checklist](#newcomer-faqs)
 
 #### Getting an Error somewhere?
 
-We have a list of [Commmon Errors](https://github.com/mehtadone/PTFeeder/wiki/Common-errors) - check this page out.
+We have a list of [Commmon Errors](problemsolving.html) - check this page out.
 
 Otherwise look through our navigation to the right and help yourself.
 
 ## Introduction 
 
-
-![]({{ "/doks-theme/assets/images/PT-addon-500x186.png" | absolute_url }})
+![An image](./images/ptaddon.png)
 
 **PT Feeder is an authorised-add on to [Profit Trailer](https://profittrailer.io/pt/mehtadone/), one of the best crypto trading bots. However it is developed and supported by a different team and the Profit Trailer support channels will not be able to provide any support information about this tool.**
 
@@ -83,15 +71,19 @@ This flow is repeated every few minutes. Within this process the config for Prof
 *Important:* Everything in your PT config will be overwritten by PT Feeder. That's how it is supposed to work. This happens every few minutes, so generally don't edit your config as long as you use PT Feeder as your changes will be lost.
 
 
-#### Community & Support
+### Community & Support
 
 For support, please [read the wiki](https://mehtadone.github.io/PTFeeder/) and go to the [CryptoProfitBot Central Help Page](https://help.cryptoprofitbot.com/start/). You will also find a link to the __Discord Community__ on that Help Page.
 
-#### Warning
+::: danger
+This tool is not for beginners.
+:::
 
-**This tool is not for beginners.**
+If you are wondering how much extra profit this will make you, this probably isn't the tool for you yet. It is NOT paid-for settings. This will require a thorough understanding of Profit Trailer configuration, how it works and buy and sell strategies. 
 
-If you are wondering how much extra profit this will make you, this probably isn't the tool for you yet. It is NOT paid-for settings. This will require a thorough understanding of Profit Trailer configuration, how it works and buy and sell strategies. Please read the [Profit Trailer wiki](https://wiki.profittrailer.io/doku.php) first. 
+::: tip
+Please read the [Profit Trailer wiki](https://wiki.profittrailer.io/doku.php) first. 
+::: 
 
 The default settings in the zip file are there to show you all the possibilities of this tool. Using them out of the box will lead to a big reduction in trades. It is up to you, with the help of your reseller, to construct a strategy to your liking. 
 
@@ -120,7 +112,7 @@ The following are the resellers for PT Feeder. Please contact them if you are in
 #### 💸[Shop](https://cryptoprofitbot.com/)
 #### 📺[YouTube](https://www.youtube.com/channel/UCCG84JjbL1Y38aN1Vtoa3ag)
 
-#### Pre installed VPS
+### Pre installed VPS
 
 LinkUpHost provides VPS solutions with Profit Trailer and PT Feeder pre installed. You still need to purchase a license from one of the resellers but this will save time in installation if you choose to go down this route. 
 
@@ -128,7 +120,7 @@ LinkUpHost provides VPS solutions with Profit Trailer and PT Feeder pre installe
 
 [PT/PTF Linux VPS](https://linkuphost.com/clients/cart.php?a=add&pid=29)
 
-#### International Resellers
+### International Resellers
 
 - 🇩🇪 [Bit_Ben](https://telegram.me/bit_ben) (German) → [Telegram](https://telegram.me/bit_ben)
 - 🇰🇷[Gio](https://telegram.me/cnarbro) (Korean) → [Telegram](https://telegram.me/cnarbro)
@@ -158,7 +150,7 @@ You need to register your Exchange API Key with Profit Trailer __AND__ PT-Feeder
 
 #### Got my API Key and License activated. What now?
 
-You need to install PT Feeder. PT Feeder is a program that runs based on Dotnet Core which is a software by Microsoft. It is available for all major Operating systems. Please check the [Installation Instruction Page](https://github.com/mehtadone/PTFeeder/wiki/Installation) on this Wiki for Details. Read carefully. There's also some information on how to start PT Feeder afterwards.
+You need to install PT Feeder. PT Feeder is a program that runs based on Dotnet Core which is a software by Microsoft. It is available for all major Operating systems. Please check the [Installation Instruction Page](/installation.html) on this Wiki for Details. Read carefully. There's also some information on how to start PT Feeder afterwards.
 
 #### Here is what happens after you start it
 
@@ -171,5 +163,3 @@ You can change about anything that PTF does within the appsettings.json in the c
 #### I still can't get XYZ going and need help
 
 If you tried finding a solution but don't get it worked out by yourself, come over to the Discord and we try to help you.
-
-
