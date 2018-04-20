@@ -6,6 +6,6 @@ This is an Addon for Profit Trailer. To get an Idea how it works or get some hel
 ### 💸  [Buy PT Feeder][2]
 ### 📺 [Watch some Videos][3]
 
-[1]:	https://github.com/mehtadone/PTFeeder/wiki
-[2]:	https://github.com/mehtadone/PTFeeder/wiki/How-to-buy-PT-Feeder
-[3]:	https://github.com/mehtadone/PTFeeder/wiki/Videos
+[1]:	https://wiki.ptfeeder.co/
+[2]:	https://wiki.ptfeeder.co/general.html#how-to-buy-pt-feeder
+[3]:	https://wiki.ptfeeder.co/general.html#educational-videos
