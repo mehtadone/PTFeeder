@@ -3,8 +3,8 @@
 This is an Addon for Profit Trailer. To get an Idea how it works or get some help setting it up, please have a look at our Wiki.
 
 ### 💂 [Read the Wiki][1]
-### 🙋 [Visit the forum][2]
-### 💸  [Buy PT Feeder][3]
+### 🙋 [Visit the forum for support and community settings][2]
+### 💸 [Buy PT Feeder][3]
 ### 📺 [Watch some Videos][4]
 
 [1]:	https://wiki.ptfeeder.co/
